@@ -16,14 +16,15 @@ namespace Full_GRASP_And_SOLID
 
         private static List<Equipment> equipmentCatalog = new List<Equipment>();
 
+        //Se aplica el patrón creator de modo que los steps que se agregan a recipe en Program, sean creados por la clase Recipe en el método AddStep.
         public static void Main(string[] args)
         {
             PopulateCatalogs();
 
             Recipe recipe = new Recipe();
             recipe.FinalProduct = GetProduct("Café con leche");
-            recipe.AddStep(new Step(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120));
-            recipe.AddStep(new Step(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60));
+            recipe.AddStep(GetProduct("Café"), 100, GetEquipment("Cafetera"), 120);
+            recipe.AddStep(GetProduct("Leche"), 200, GetEquipment("Hervidor"), 60);
 
             IPrinter printer;
             printer = new ConsolePrinter();
